@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Indicator } from "./components/common/data-display";
 import { Header } from "./components/layout";
@@ -10,6 +10,23 @@ import { Todo } from "./core/types/Todo.types";
 
 export function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  useEffect(function getTodosFromLocalStorage() {
+    const todosFromLocalStorage = localStorage.getItem("todos");
+
+    if (todosFromLocalStorage) {
+      setTodos(JSON.parse(todosFromLocalStorage));
+    }
+  }, []);
+
+  useEffect(
+    function saveTodosToLocalStorage() {
+      if (todos.length) {
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+    },
+    [todos]
+  );
 
   function addTodo(text: string) {
     const newTodo: Todo = {

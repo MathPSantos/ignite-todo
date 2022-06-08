@@ -25,15 +25,16 @@ export function TodoItem({ todo, onToogle, onRemove }: TodoItemProps) {
   return (
     <div className="flex items-start gap-3 w-full bg-gray-500 border border-gray-400 p-4 rounded-lg">
       <input
-        className="appearance-none w-5 h-5 rounded-full border border-blue-500 bg-gray-500 checked:bg-purple-500 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
+        className="appearance-none w-5 h-5 rounded-full border-2 border-blue-500 bg-gray-500 hover:bg-blue-700 hover:checked:bg-purple-500 checked:bg-purple-700 checked:focus:bg-purple-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
         type="checkbox"
+        checked={todo.isCompleted}
         onClick={handleCheckbox}
       />
 
       <p className={textClassName}>{todo.text}</p>
 
       <button
-        className="flex items-center justify-center w-6 h-6 bg-transparent rounded-sm text-gray-300"
+        className="flex items-center justify-center w-6 h-6 bg-transparent rounded text-gray-300 hover:bg-gray-400 hover:text-red-500"
         onClick={handleRemove}
         title="Remover tarefa"
       >

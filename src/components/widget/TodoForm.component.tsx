@@ -25,7 +25,7 @@ export function TodoForm({ onCreateNewTodo }: TodoListProps) {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button className="h-full px-4 flex items-center gap-2 text-gray-100 bg-blue-700 rounded-lg font-bold">
+      <button className="h-full px-4 flex items-center gap-2 text-gray-100 bg-blue-700 rounded-lg font-bold hover:bg-blue-500">
         Criar
         <PlusCircle size={16} />
       </button>
