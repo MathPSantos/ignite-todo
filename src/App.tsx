@@ -50,6 +50,11 @@ export function App() {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   }
 
+  const todosQuantity = todos.length;
+  const completedTodosQuantity = todos.filter(
+    (todo) => todo.isCompleted
+  ).length;
+
   return (
     <>
       <Header />
@@ -59,8 +64,12 @@ export function App() {
 
           <div className="mt-16">
             <div className="flex items-center justify-between">
-              <Indicator value={0} content="Tarefas criadas" />
-              <Indicator value={0} content="Concluídas" colorScheme="purple" />
+              <Indicator value={todosQuantity} content="Tarefas criadas" />
+              <Indicator
+                value={completedTodosQuantity}
+                content="Concluídas"
+                colorScheme="purple"
+              />
             </div>
 
             <TodoList
