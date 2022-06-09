@@ -1,4 +1,10 @@
-import { HTMLAttributes, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  HTMLAttributes,
+  InvalidEvent,
+  useState,
+} from "react";
 import { PlusCircle } from "phosphor-react";
 
 interface TodoListProps extends HTMLAttributes<HTMLFormElement> {
@@ -8,12 +14,22 @@ interface TodoListProps extends HTMLAttributes<HTMLFormElement> {
 export function TodoForm({ onCreateNewTodo }: TodoListProps) {
   const [text, setText] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     onCreateNewTodo(text);
 
     setText("");
+  }
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    e.target.setCustomValidity("");
+
+    setText(e.target.value);
+  }
+
+  function handleInvalid(e: InvalidEvent<HTMLInputElement>) {
+    e.target.setCustomValidity("Adicione um texto ao campo");
   }
 
   return (
@@ -23,7 +39,9 @@ export function TodoForm({ onCreateNewTodo }: TodoListProps) {
         placeholder="Adicione uma nova tarefa"
         type="text"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={handleChange}
+        onInvalid={handleInvalid}
+        required
       />
       <button className="h-full px-4 flex items-center gap-2 text-gray-100 bg-blue-700 rounded-lg font-bold hover:bg-blue-500">
         Criar

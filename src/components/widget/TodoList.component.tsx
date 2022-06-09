@@ -37,7 +37,7 @@ export function TodoList({
           <span>Crie tarefas e organize seus itens a fazer</span>
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 pb-6">
           {todos.map((todo) => (
             <TodoItem
               key={todo.id}
