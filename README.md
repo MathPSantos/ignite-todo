@@ -66,7 +66,7 @@ To clone the project, use the commands bellow:
 
 ```bash
   # Clone the repository
-  ❯ git clone https://github.com/MathPSantos/ignite-todo
+  ❯ git clone https://github.com/MathPSantos/ignite-todo.git
 
   # Enter directory
   ❯ cd ignite-todo
@@ -89,7 +89,7 @@ To install dependencies and initialize the project, you can use **Yarn** or **NP
 
 **Using npm**
 
-*If you use NPM, delte `yarn.lock` file to see all installed dependencies in the best way.*
+*If you use NPM, delete `yarn.lock` file to see all installed dependencies in the best way.*
 
 ```bash  
   # Install the dependencies
